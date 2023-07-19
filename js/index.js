@@ -1,9 +1,9 @@
-const blogPostsHtml = document.querySelector(".blog-posts");
-const newPost = document.querySelector(".new-post");
+const blogPostsHtml = document.querySelector('.blog-posts');
+const newPost = document.querySelector('.new-post');
 let postsArray = [];
 
 function renderPosts() {
-	var html = "";
+	var html = '';
 	for (let post of postsArray) {
 		html += `
 		<h3>${post.title}</h3>
@@ -13,26 +13,26 @@ function renderPosts() {
 	blogPostsHtml.innerHTML = html;
 }
 
-const postHtml = fetch("https://apis.scrimba.com/jsonplaceholder/posts")
+const postHtml = fetch('https://apis.scrimba.com/jsonplaceholder/posts')
 	.then((res) => res.json())
 	.then((data) => {
 		postsArray = data.slice(0, 8);
 		renderPosts();
 	});
 
-newPost.addEventListener("submit", (e) => {
+newPost.addEventListener('submit', (e) => {
 	e.preventDefault();
-	const postTitle = document.querySelector(".post-title").value;
-	const postBody = document.querySelector(".post-body").value;
+	const postTitle = document.querySelector('.post-title').value;
+	const postBody = document.querySelector('.post-body').value;
 	const data = {
 		title: postTitle,
 		body: postBody,
 	};
-	fetch("https://apis.scrimba.com/jsonplaceholder/posts", {
-		method: "POST",
+	fetch('https://apis.scrimba.com/jsonplaceholder/posts', {
+		method: 'POST',
 		body: JSON.stringify(data),
 		headers: {
-			"Content-Type": "application/json",
+			'Content-Type': 'application/json',
 		},
 	})
 		.then((res) => res.json())
